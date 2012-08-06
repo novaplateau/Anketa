@@ -1,0 +1,39 @@
+.tabs{
+	width:200px;
+	border-radius:10px 10px 0 0;
+	margin-bottom:5px;
+	box-shadow:0px 0px 2px #ADADAD;
+}
+.description pre{
+	font-size:16px;
+}
+.description{
+	padding:5px 10px;
+	font-size:20px;
+}
+.childTab{
+	padding:10px;
+	background:	#EEEEEE;
+	display:none;
+	overflow: auto;
+	max-height:600px;
+	font-size:16px;
+}
+.show_all{
+	font-size: 13px;
+	border:1px solid black;
+	width: 100px;
+	margin-bottom:20px;
+	background-color: #0064CD;
+    border-radius: 4px 4px 4px 4px;	
+    background-image: -moz-linear-gradient(center top , #049CDB, #0064CD);
+    background-image: -webkit-linear-gradient(center top , #049CDB, #0064CD);
+    background-image: -ms-linear-gradient(center top , #049CDB, #0064CD);
+    background-image: -o-linear-gradient(center top , #049CDB, #0064CD);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    padding:5px 16px;
+    display: inline-block;
+}

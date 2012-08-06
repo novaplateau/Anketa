@@ -1,0 +1,243 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="topor" />
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+	<script src="js/jquery.js" type="text/javascript"></script>
+	<script src="js/script.js" type="text/javascript"></script>
+	<title>Сайт-резюме</title>
+</head>
+
+<body>
+	<span class="show_all off">Показать все</span>
+		<div class="tabs">
+	 		<div class="description">Задание 1</div>
+			<div class="childTab">
+				<pre>
+в firefox-firebag,firephp,web-developer
+в chrome,opera,IE - инструменты разработчика
+При отлаки js пользуюсь точками останова.
+				</pre>
+			</div>
+		</div>
+	<div class="tabs">
+	 	<div class="description">Задание 2</div>
+		<div class="childTab">При клике на ссылку начинает собираться пакет для отправки, проходит 5 уровней ЭМВОС после чего в физическоми уровне идет передача сигнала на узел, после чего узел направляет сигнал на нужный сервер, после этого начинается расшифровка сигнала и разбор пакета, потом сервер формирует ответ и также через узел отправляет сигнал клиенту.
+
+		</div>
+	</div>
+	<div class="tabs">
+	 	<div class="description">Задание 3</div>
+		<div class="childTab">
+			<pre>
+function Car(manufacturer, model, year) {
+    this.manufacturer = manufacturer;
+    this.model = model;
+	if(year)
+		this.year = year;
+	else{
+		dt = new Date();
+		year = dt.getFullYear();
+		this.year = year;
+	}
+
+    this.getInfo = function(){
+    	var info = this.manufacturer + ' ' + this.model + ' ' + this.year;
+    	return info;
+    }
+    this.getDetailedInfo = function(){
+    	var info = 'Производитель: ' + this.manufacturer + '. Модель: '+ this.model+ ' Год: ' + this.year;
+    	return info;    
+    } 
+	this.getCountry = function () {
+		switch (this.manufacturer.toLowerCase()) {
+		    case 'bmw':
+		case 'audi':
+		        return 'Germany';
+
+		    case 'toyota':
+		        return 'Japan';
+		}
+	}        
+}
+	
+/**
+ * Создает экземпляр Автосалона
+ * @this {CarDealer}
+ * @param {string} name Название автосалона
+ */
+function CarDealer(name) {
+    this.name = name;
+    this.cars = [];
+    this.add = function(){
+		leng = arguments.length;
+		var currentcar = [];
+		for(i = 0 ;i < leng ; i++){
+			currentcar[0] = arguments[i];
+			currentcar[1] = arguments[i].manufacturer+' '+arguments[i].model+' '+arguments[i].year;			 
+			this.cars[this.cars.length] = currentcar.slice(0);
+		}
+	}
+	this.setPrice = function(car,price){
+		var len = this.cars.length;
+		for(var i = 0;i < len;i++){
+			if(car==this.cars[i][1])
+				this.cars[i][2] = price;
+		}
+	}
+	this.list = function(){
+		var katalog = '';
+		var len = this.cars.length;
+		for(var i = 0;i < len;i++)
+			katalog = katalog + this.cars[i][1]+',';
+		console.log(katalog);	
+	}
+	this.listByCountry = function(country){
+		var katalog = '';
+		var len = this.cars.length;
+		for(var i = 0;i < len;i++)
+			if(country == this.cars[i][0].getCountry())
+				katalog = katalog + this.cars[i][1]+',';
+		console.log(katalog);			
+	}
+}
+
+var bmw = new Car("BMW", "X5", 2010),
+    audi = new Car("Audi", "Q5", 2012),
+    toyota = new Car("Toyota", "Camry");
+var yandex = new CarDealer('Яндекс.Авто');
+
+// @TODO: реализовать метод добавления машин в автосалон. Предусмотреть возможность добавления одной машины, нескольких машин.
+	yandex.add(bmw, audi);
+	yandex.add(toyota);
+// @TODO: реализовать метод установки цены на машину
+/**
+ * Установить цену на машину
+ * @param {string} car идентификатор машины
+ * @param {string} price стоимость
+ */
+// идентификатор машины составляется следующим образом "производитель модель год"
+// стоимость машины может быть задана в двух валютах: йена и евро.
+	yandex.setPrice('BMW X5 2010', '€2000');
+	yandex.setPrice('Audi Q5 2012', '€3000');
+   	yandex.setPrice('Toyota Camry 2012', '¥3000');
+	yandex.list();
+	yandex.listByCountry('Germany');
+// @TODO: реализовать вывод списка автомобилей в продаже, с фильтрацией по стране производителю, используя метод getCountry:
+/*function getCountry() {
+    switch (this.manufacturer.toLowerCase()) {
+        case 'bmw':
+	case 'audi':
+            return 'Germany';
+
+        case 'toyota':
+            return 'Japan';
+	}
+} 			</pre>
+		</div>
+	</div>
+	<div class="tabs">
+	 	<div class="description">Задание 4</div>
+		<div class="childTab">
+			<pre>
+Скрипт на php
+function searchFile($dir, $mask){//начинаем перебирать каждый файл или дерикторию
+        foreach(glob($dir.'/*') as $filename){
+	    	//file_put_contents('/home/alaxey/htdocs/catalog.log',print_r(strpos('yandex',$filename)."\n", true),FILE_APPEND);
+	        if((strtolower(substr($filename, strlen($filename)-strlen($mask), strlen($mask)))==strtolower($mask)) && strpos($filename,'yandex') && is_file($filename)){ //1ое условине - заканчивается на ".txt", второе - в имени содержится yandex, третье -это файл
+				$content = file_get_contents($filename);//получаем содержимое файла
+				if(strpos($content,'школа разработки интерфейсов')!== false)//ищем заданную строку внутри файла
+					echo $filename."<br>";//выводим на экран имя файла
+			}
+	        if(is_dir($filename))//если это директория, то запускаем рекурсию
+				searchFile($filename, $mask);
+    }
+}
+searchFile("files", ".txt");//первый параметр - директория, второй - на что должен заканчиваться файл 
+			</pre>
+
+		</div>
+	</div>
+	<div class="tabs">
+	 	<div class="description">Задание 5</div>
+		<div class="childTab">
+			<pre>
+#!/usr/bin/env bash
+
+usage() {
+cat << EOF
+Usage: printargs.sh [OPTIONS] [ARGUMENTS]
+  Print the number of arguments.
+
+OPTIONS:
+  -h      print help message
+  -m MSG  custom message
+  -v      verbose mode
+
+Examples:
+  printargs.sh a b c
+  printargs.sh -m 'Arguments count: ' a b c
+  printargs.sh -h
+
+EOF
+}
+
+VERBOSE=0
+
+while getopts “hmv:” OPTION # TODO: add '-v' option for verbose mode
+do
+    case $OPTION in
+        h)
+            usage
+            exit 1
+            shift;;
+        m)
+            MESSAGE=$OPTARG
+            shift;shift;;
+        v)
+        	VERBOSE=1
+            shift;;
+    esac
+done
+
+COUNT=0
+
+for ARG in $@; do
+    # TODO: add '-v' option for verbose mode
+    # and print each argument
+    let COUNT+=1
+    if [[ $VERBOSE == 1 ]]; then
+    	echo $COUNT. $ARG
+    fi
+done
+
+if [[ "$MESSAGE" != "" ]]; then
+    echo $MESSAGE
+fi
+
+echo $COUNT
+			</pre>		
+
+		</div>
+	</div>
+	<div class="tabs">
+	 	<div class="description">Задание 6</div>
+		<div class="childTab">
+Т.к я учусь на на математика-программиста, то:</br>
+1)1-2 семестр проходил Pascal. </br>
+2)3-4 семестр C++(со стретьего четвертого началось полностью ООП программирование:на сегодняшний день всего 3 семестра ООП).</br>
+3)Затем 5-6 семестр C#(шестой семестр представлял из себя изучение патернов).</br>
+4)Был курс WinAPI(5 семсетр), где на основании API функций создавали программы: там познакомился с событиями, асинхронностью, многопоточностью(это так же было на C#).</br>
+5)Был курс Структуры и алгоритмы комп. обработки данных(3 семестр), там проходили разные алгоритмы: от поиска до алгоритмов создания магических квадратов,
+сжатия, обхода графа и обхода шахматной доски конем.- из курса понял что все запомнить нереально-главное научиться пользоваться и находить.</br>
+6)Курс ассемблера(4 семестр).</br>
+7)Так же были курсы баз данных и разработки сайтов, но поскольку сам работаю в этой сфере, то научился на работе намного большему чем в институте.
+			
+		</div>
+	</div>
+
+
+</body>
+</html>
