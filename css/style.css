@@ -4,8 +4,8 @@
 	margin-bottom:5px;
 	box-shadow:0px 0px 2px #ADADAD;
 }
-.description pre{
-	font-size:16px;
+pre{
+	font-size:12px;
 }
 .description{
 	padding:5px 10px;
@@ -14,8 +14,8 @@
 .childTab{
 	padding:10px;
 	background:	#EEEEEE;
-	display:none;
 	overflow: auto;
+	display:none;
 	max-height:600px;
 	font-size:16px;
 }
@@ -37,3 +37,11 @@
     padding:5px 16px;
     display: inline-block;
 }
+@media print{
+	pre{
+		white-space: pre-wrap;	
+	}	
+	.show_all{
+		display:none
+	}
+} 
